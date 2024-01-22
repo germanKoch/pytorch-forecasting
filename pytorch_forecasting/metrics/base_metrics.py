@@ -799,7 +799,7 @@ class MultiHorizonMetric(Metric):
         else:
             losses = losses.sum()
             if not torch.isfinite(losses):
-                losses = losses.fill_(1e9, device=losses.device)
+                losses = losses.fill_(1e9)
                 #losses = torch.tensor(1e9, device=losses.device)
                 warnings.warn("Loss is not finite. Resetting it to 1e9")
             self.losses = self.losses + losses
